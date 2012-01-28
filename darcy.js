@@ -59,7 +59,8 @@ ig.module(
                     {
                         
                         //if horizontal meny spacing applies to x and not y
-                        ig.system.context.fillText(this.MenuItems[i].text,this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(i)),this.MenuStart.y);
+                        this.drawItems();
+                        //ig.system.context.fillText(this.MenuItems[i].text,this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(i)),this.MenuStart.y);
                     }
                     if(this.MenuLayout=="V")
                     {
@@ -92,7 +93,7 @@ ig.module(
             }
             
         },
-        addItem: function(menutext, menulabel, inputAction,inputEvent){
+        addItem: function(menutext, menulabel, inputAction, inputEvent){
             var dItem = new ig.DarcyItem();
             dItem.text = menutext;
             dItem.label = menulabel;
@@ -101,6 +102,7 @@ ig.module(
             dItem.drawBox = this.DrawBoxes;
             dItem.boxStrokeStyle = this.BoxStrokeStyle;
             dItem.boxStrokeWidth = this.BoxStrokeWidth;
+            dItem.MenuLayout=this.MenuLayout;
             if(this.MenuLayout=="V")
             {
                 dItem.leftBounds = this.MenuStart.x;
@@ -108,7 +110,14 @@ ig.module(
                 dItem.upperBounds = this.MenuStart.y+((this.ButtonSize.y+this.Spacing.y)*(this.MenuItems.length));
                 dItem.lowerBounds = this.MenuStart.y+((this.ButtonSize.y+this.Spacing.y)*(this.MenuItems.length))+this.ButtonSize.y;
             }
-            //console.log(dItem);
+            if(this.MenuLayout=="H")
+            {
+                dItem.leftBounds = this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(this.MenuItems.length));
+                dItem.rightBounds = this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(this.MenuItems.length))+this.ButtonSize.x;
+                dItem.upperBounds = this.MenuStart.y;
+                dItem.lowerBounds = this.MenuStart.y+(this.ButtonSize.y+this.Spacing.y);
+            }
+            console.log(dItem);
             this.MenuItems.push( dItem );
         },
         removeItem: function(label)
@@ -128,7 +137,14 @@ ig.module(
             }
         },
         draw: function(){
-            ig.system.context.fillText(this.text,this.rightBounds/2,this.lowerBounds-((this.lowerBounds-this.upperBounds)/2)+(this.boxStrokeWidth*2));
+            if(this.MenuLayout=="V")
+            {
+                ig.system.context.fillText(this.text,this.rightBounds/2,this.lowerBounds-((this.lowerBounds-this.upperBounds)/2)+(this.boxStrokeWidth*2));
+            }
+            if(this.MenuLayout=="H")
+            {
+                ig.system.context.fillText(this.text,this.leftBounds+((this.rightBounds-this.leftBounds)/2),this.lowerBounds-((this.lowerBounds-this.upperBounds)/2)+(this.boxStrokeWidth*2));
+            }
             if (this.drawBox)
             {
                 ig.system.context.strokeStyle=this.boxStrokeStyle;

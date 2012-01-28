@@ -106,7 +106,7 @@ ig.module(
             if(this.MenuLayout=="V")
             {
                 dItem.leftBounds = this.MenuStart.x;
-                dItem.rightBounds = this.MenuStart.x+(this.ButtonSize.x+this.Spacing.x);
+                dItem.rightBounds = this.MenuStart.x+(this.ButtonSize.x);
                 dItem.upperBounds = this.MenuStart.y+((this.ButtonSize.y+this.Spacing.y)*(this.MenuItems.length));
                 dItem.lowerBounds = this.MenuStart.y+((this.ButtonSize.y+this.Spacing.y)*(this.MenuItems.length))+this.ButtonSize.y;
             }
@@ -115,7 +115,7 @@ ig.module(
                 dItem.leftBounds = this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(this.MenuItems.length));
                 dItem.rightBounds = this.MenuStart.x+((this.ButtonSize.x+this.Spacing.x)*(this.MenuItems.length))+this.ButtonSize.x;
                 dItem.upperBounds = this.MenuStart.y;
-                dItem.lowerBounds = this.MenuStart.y+(this.ButtonSize.y+this.Spacing.y);
+                dItem.lowerBounds = this.MenuStart.y+(this.ButtonSize.y);
             }
             console.log(dItem);
             this.MenuItems.push( dItem );

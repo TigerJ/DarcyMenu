@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Darcy Demo</title>
+	<style type="text/css">
+		html,body {
+			background-color: #000;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+		
+		#canvas {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+		}
+	</style>
+    <script type="text/javascript" src="lib/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="game.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#add").click(function(event){
+            if($('input:radio[name=menutype]:checked').val()=="darcy")//probably not a good selector use an ID or class
+            {
+                var text = $("#text").val();
+                var label = $("#label").val();
+                var inputAction = $("#action").val();
+                ig.game.darcy.addItem(text,label,inputAction,function(){console.log(label);});
+            }
+            else if($('input:radio[name=menutype]:checked').val()=="darcy2")
+            {
+                var text = $("#text").val();
+                var label = $("#label").val();
+                var inputAction = $("#action").val();
+                ig.game.darcy2.addItem(text,label,inputAction,function(){console.log(label);});
+            }
+            else
+            {
+                //select a radio derp
+            }
+            event.preventDefault();
+        })
+    })
+    </script>
+</head>
+<body>
+    <p>Add Menu Item</p>
+    
+    <input type="radio" value="darcy" name="menutype" id="menutype">Horizontal<br />
+    <input type="radio" value="darcy2" name="menutype" id="menutype">Vertical<br />
+    text: <input type="text" id="text"><br />
+    button label: <input type="text" id="label"><br />
+    input action: <input type="text" id="action" value="shoot"><br />shoot is bound to mouse1<br /><br />
+    event: function(){console.log(&lt;YOUR LABEL&gt;);}<br />
+    <a href="#" id="add">Add Item</a><br />
+	<canvas id="canvas"></canvas>
+</body>
+</html>

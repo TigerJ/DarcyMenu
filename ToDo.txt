@@ -1,0 +1,13 @@
+-draw menu borders and define space/button align options
+-entity flag
+-entity addItem stuff
+-button background over options
+-border over options
+-entity over options
+-remove item stuff
+-alter item stuff
+-canavas effects (over/idle)
+-hide/show options?
+-sliders
+-toggles
+-dropdown objects

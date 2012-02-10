@@ -1,8 +1,7 @@
+In Progress
 
 -entity flag
 -entity addItem stuff
-
--border over options
 -entity over options
 -remove item stuff
 -alter item stuff
@@ -11,3 +10,7 @@
 -sliders
 -toggles
 -dropdown objects
+
+Completed
+
+-border over option 2/10/2012
